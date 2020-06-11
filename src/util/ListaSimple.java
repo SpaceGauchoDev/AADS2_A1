@@ -43,6 +43,27 @@ public class ListaSimple {
 	}
 	
 	
+	public String ConcatenarLista() {
+		if(largo == 0) {
+			return "Lista vacía."; 
+		}else {
+			NodoListaSimple nodoBuscador = inicio;
+			StringBuilder s = new StringBuilder();
+			s.append(inicio.dato);
+			s.append("|");
+			
+			while (nodoBuscador.siguiente != null) {
+				nodoBuscador = nodoBuscador.siguiente;
+				s.append(nodoBuscador.dato);
+				
+				s.append("|");
+			}
+			//borramos el ultimo comaEspacio y agregamos un punto.
+			s.delete(s.length() -1 , s.length());
+			return s.toString();
+		}
+	}
+	
 	
 	// Obtener nodo
 	// param posicion	
@@ -72,7 +93,7 @@ public class ListaSimple {
 	
 	// insertar nodo al final
 	// param dato
-	public void InsertarNodoAlFinal(int pDato){
+	public void InsertarNodoAlFinal(String pDato){
 		NodoListaSimple nuevoNodo = new NodoListaSimple(pDato);
 		
 		if (largo == 0) {
@@ -124,7 +145,7 @@ public class ListaSimple {
 	
 	// insertar nodo al inicio
 	// param dato
-	public void InsertarNodoAlInicio(int p){
+	public void InsertarNodoAlInicio(String p){
 		if (largo == 0) {
 			inicio = new NodoListaSimple(p);
 		}else {
@@ -237,14 +258,18 @@ public class ListaSimple {
             return;
         }
         
+        ABC comparador = new ABC();
+        /*int comparacionAlfabetica = comparador.compararStrings(pMatricula, pNodo.dato.matricula, direccion);*/
+        
         for(int i = 0; i < largo - 1; i++){
             for(int j = 0; j < largo - 1; j++){
 
-           	
+            	int comparacion = comparador.compararStrings(ObtenerNodoEnPosicion(j).dato, ObtenerNodoEnPosicion(j+1).dato, Enums.Dir.Ascendente);
+            	/*
             	int i1 = ObtenerNodoEnPosicion(j).dato;
             	int i2 = ObtenerNodoEnPosicion(j+1).dato;
-                
-                if( i2 < i1){
+            	*/
+                if( comparacion < 0){
                 	IntercambiarNodosEnPos(j, j+1);
                 }
             }
@@ -257,14 +282,18 @@ public class ListaSimple {
             return;
         }
         
+        ABC comparador = new ABC();
+        
         for(int i = 0; i < largo - 1; i++){
             for(int j = 0; j < largo - 1; j++){
 
            	
+            	int comparacion = comparador.compararStrings(ObtenerNodoEnPosicion(j).dato, ObtenerNodoEnPosicion(j+1).dato, Enums.Dir.Descendente);
+            	/*
             	int i1 = ObtenerNodoEnPosicion(j).dato;
             	int i2 = ObtenerNodoEnPosicion(j+1).dato;
-                
-                if( i2 > i1){
+            	*/
+                if( comparacion < 0){
                 	IntercambiarNodosEnPos(j, j+1);
                 }
             }

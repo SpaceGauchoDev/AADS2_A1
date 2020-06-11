@@ -1,30 +1,33 @@
 package uy.edu.ort.obli;
 import util.*;
 
-class Main 
-{
+class Main {
 	
-	public static void main(String args[]) 
-	{ 
-		ListaSimple lista = new ListaSimple();
+	public static void main(String args[]){ 
+		ABB arbol = new ABB(Enums.Dir.Descendente);
+		//ABB arbol = new ABB(Enums.Dir.Ascendente);
 		
-		lista.InsertarNodoAlFinal(33);
-		lista.InsertarNodoAlFinal(2);
-		lista.InsertarNodoAlFinal(77);
-		lista.InsertarNodoAlFinal(-15);
-		lista.InsertarNodoAlFinal(73);
-		lista.InsertarNodoAlFinal(-5);
-		lista.InsertarNodoAlFinal(3);
-		lista.InsertarNodoAlFinal(18);
-		lista.InsertarNodoAlFinal(99);
-		lista.InsertarNodoAlFinal(92);
-		lista.InsertarNodoAlFinal(2879);
-		lista.InsertarNodoAlFinal(4554);
-		lista.InsertarNodoAlFinal(78);
+		arbol.InsertarNodo(arbol.raiz, "AAA1111", "ManuelD");
+		arbol.InsertarNodo(arbol.raiz, "AAA1112", "Seba");
+		arbol.InsertarNodo(arbol.raiz, "AAA2111", "ManuelA");
 		
-		lista.ImprimirListaAscendente();
-		lista.OrdenarListaAscendente();
-		lista.ImprimirListaAscendente();
+		I.Log(arbol.InicioImprimirInOrder());
+		/*arbol.InicioBuscar("AAA1112");*/
+		/*
+		Retorno test = arbol.InicioBuscarConIteraciones("AAA2111");
+		
+		if(test.resultado == Retorno.Resultado.OK) {
+			I.Log("Lo encontró.");
+			I.Log("Numero de iteraciones: " + test.valorEntero);
+			I.Log("Nombre: " + test.valorString);
+		}
+		if(test.resultado == Retorno.Resultado.ERROR_1) {
+			I.Log("Error de formato");
+		}
+		if(test.resultado == Retorno.Resultado.ERROR_2) {
+			I.Log("No lo encontro");
+		}
+		 */
 		
 	}
 	

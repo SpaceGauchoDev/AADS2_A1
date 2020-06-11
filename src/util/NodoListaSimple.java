@@ -1,20 +1,20 @@
 package util;
 
 public class NodoListaSimple {
-	public int dato;
+	public String dato;
 	public NodoListaSimple siguiente;
 	
 	public NodoListaSimple(){
-		dato = 0;
+		dato = "";
 		siguiente = null;
 	}
 	
-	public NodoListaSimple(int pDato){
+	public NodoListaSimple(String pDato){
 		dato = pDato;
 		siguiente = null;		
 	}
 	
-	public  NodoListaSimple(int pDato, NodoListaSimple pSiguiente){
+	public  NodoListaSimple(String pDato, NodoListaSimple pSiguiente){
 		dato = pDato;
 		siguiente = pSiguiente;
 	}
