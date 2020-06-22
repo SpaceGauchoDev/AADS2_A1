@@ -43,6 +43,29 @@ public class ListaSimple {
 	}
 	
 	
+	// imprimir datos lista en orden ascendente
+	public void ImprimirListaAristasAscendente() {
+		if(largo == 0) {
+			I.Log("Lista vacía.");
+		}else {
+			NodoListaSimple nodoBuscador = inicio;
+			StringBuilder s = new StringBuilder();
+			s.append(inicio.arista.u.nombre +  "-" + inicio.arista.w.nombre);
+			s.append(", ");
+			
+			while (nodoBuscador.siguiente != null) {
+				nodoBuscador = nodoBuscador.siguiente;
+				s.append(nodoBuscador.arista.u.nombre + "-" + nodoBuscador.arista.w.nombre);
+				s.append(", ");
+			}
+			//borramos el ultimo comaEspacio y agregamos un punto.
+			s.delete(s.length() -2 , s.length());
+			s.append(".");
+			I.Log(s);
+		}
+	}
+	
+	
 	public String ConcatenarLista() {
 		if(largo == 0) {
 			return "Lista vacía."; 
@@ -91,6 +114,28 @@ public class ListaSimple {
 	}
 	
 	
+	// busca nodo que contenga dato arista correspondiente a los parametros
+	// si no lo encuentra devuelve null
+	public AristaGrafo ObtenerDatoArista(double pXI, double pYI, double pXF, double pYF) {
+		AristaGrafo a = null;
+		
+		NodoListaSimple nodoBuscador = inicio;
+		
+		while (a == null && nodoBuscador != null) {
+			if(		nodoBuscador.arista.u.x == pXI && 
+					nodoBuscador.arista.u.y == pYI &&
+					nodoBuscador.arista.w.x == pXF &&
+					nodoBuscador.arista.w.y == pYF ) {
+				
+				a = nodoBuscador.arista;
+			}else {
+				nodoBuscador = nodoBuscador.siguiente;
+			}
+		}
+		
+		return a;
+	}
+	
 	// insertar nodo al final
 	// param dato
 	public void InsertarNodoAlFinal(String pDato){
@@ -113,7 +158,6 @@ public class ListaSimple {
 	// insertar nodo al final
 	// param nodo
 	public void InsertarNodoAlFinal(NodoListaSimple n){
-		
 		if (largo == 0) {
 			inicio = n;
 		}else {

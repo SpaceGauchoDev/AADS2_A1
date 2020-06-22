@@ -74,7 +74,7 @@ public class ABB {
     */
 	
 	// Inserta nodo recursivamente	
-    public NodoABB InsertarNodo(NodoABB pNodo, String pMatricula, String pNombre){   
+    public NodoABB InsertarNodo(NodoABB pNodo, String pMatricula, String pNombre){ 
     	// si el nodo o sub arbol es vacío, creamos un nuevo nodo, lo insertamos como raiz y lo devolvemos
         if (pNodo == null) { 
         	pNodo = new NodoABB(pMatricula, pNombre);
@@ -182,10 +182,13 @@ public class ABB {
         	return BuscarConIteraciones(busquedaDer, pMatricula);
         }
     }
+    
+    public void BorrarArbol() {
+		raiz = null;
+    }
 	
 	public ABB(Enums.Dir pDir){
 		direccion = pDir;
 		raiz = null;
 	}
-
 }
